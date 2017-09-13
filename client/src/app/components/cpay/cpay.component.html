@@ -1,0 +1,348 @@
+<form [formGroup]="cpayForm" (submit)="OnTransectioSubmit()">
+<div class="row" >
+    <div class="col-sm-2 col-lg-2">
+    </div>
+    <div class="col-sm-9 col-lg-9">
+      <div class="page-header">
+        <h1>Clean Payments <small>{{this.cpayForm.controls.screenCaption.value}}</small></h1>
+      </div>
+      <div class="alert alert-danger" role="alert" name="messages">
+      </div>
+      <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="contractNumber">Contract Number:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" name="ContractNumber" placeholder="" formControlName="ContractNumber" ng-maxlength="=12" ng-disabled="{this.cpayForm.controls.screenCaption.value} = 'add' ">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="productType">Product Type:</label>
+          <div class="col-sm-2 col-lg-2">
+            <select [(ngModel)]="ProductType" class="form-control" name="ProductType" (change)="onChange($event.target)">
+
+                            <option *ngFor="let p of productTemplate" [ngValue]="p.PROD_TYPE">
+                              {{p.PROD_TYPE}}  | {{p.PROD_NAME}}</option>            
+           </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="glMaster">GL Master:</label>
+          <div class="col-sm-2 col-lg-2">
+            <!--<input class="form-control" name="GLMaster" formControlName="GLMaster"/>-->
+            <select [(ngModel)]="GLMaster" class="form-control" name="GLMaster" (change)="onChange($event.target)" required>
+              <option *ngFor="let g of glmasterTemplate" [ngValue]="g.MASTER_NO">{{g.MASTER_NO}}</option>
+           </select>
+           <span ng-show="cpayForm.GLMaster.$invalid"> GL Master is incorrect</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="incomingReference">IncomingReference:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" name="IncomingReference" placeholder="" formControlName="IncomingReference"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="accountingCentre">Accounting Centre:</label>
+          <div class="col-sm-2 col-lg-2">
+            <!--<input class="form-control" name="AccountingCentre" formControlName="AccountingCentre"/>-->
+           <select [(ngModel)]="AccountingCentre" class="form-control" name="AccountingCentre" (change)="onChange($event.target)" required>
+              <option *ngFor="let a of accountingcentreTemplate" [ngValue]="a.BRANCH">{{a.BRANCH}}</option>
+           </select>
+           <span ng-show="cpayForm.AccountingCentre.$invalid"> AccountingCentre is incorrect</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="messagePriority">Message Priority:</label>
+          <div class="col-sm-2 col-lg-2">
+            <!--<input class="form-control" name="MessagePriority" formControlName="MessagePriority"/>-->
+            <select [(ngModel)]="MessagePriority" class="form-control" name="MessagePriority" (change)="onChange($event.target)">
+              <!--<option *ngFor="let m of messagepriorityTemplate" [ngValue]="m.BRANCH">{{m.M_PRIORITY}}</option>-->
+              <option value="02">NORMAL N2020 </option>
+              <option value="01">URGENT U1003</option>
+              <option value="11">URGENT U3003 </option>
+              <option value="99"> NONE </option>
+           </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="status">Status:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" name="Status" placeholder="" formControlName="Status"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="replacesContract">Replaces Contract:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" name="ReplacesContract" placeholder="" formControlName="ReplacesContract"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="linkedContract">Linked Contract:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" name="LinkedContract" placeholder="" formControlName="LinkedContract"/>
+          </div>
+        </div>
+        <div class="panel with-nav-tabs panel-default">
+          <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+              <li class="active"><a href="#tab1cpay" data-toggle="tab">Debit Details</a></li>
+              <li><a href="#tab2cpay" data-toggle="tab">Credit Details</a></li>
+              <li><a href="#tab3cpay" data-toggle="tab">Other Details</a></li>
+            </ul>
+          </div>
+          <div class="panel-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1cpay">
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitValueDate">Debit Value Date:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="DebitValueDate" placeholder="" formControlName="DebitValueDate"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitAccount">Debit Account:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="DebitAccount" placeholder="" formControlName="DebitAccount"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitAgent">Debit Agent:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="DebitAgent" placeholder="" formControlName="DebitAgent"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitAmount">Debit Amount:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="DebitAmount" placeholder="" formControlName="DebitAmount"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitCurrency">Debit Currency:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <!--<input class="form-control" name="DebitCurrency" formControlName="DebitCurrency"/>-->
+                    <select [(ngModel)]="DebitCurrency" class="form-control" name="DebitCurrency" (change)="onChange($event.target)">
+                      <option *ngFor="let dc of debitcurrencyTemplate" [ngValue]="dc.DEBIT_CCY">{{dc.DEBIT_CCY}}</option>
+                   </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitNarrativeCode">Narrative Code:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <!--<input class="form-control" name="DebitNarrativeCode" formControlName="DebitNarrativeCode"/> -->
+                    <select [(ngModel)]="NarrativeCode" class="form-control" name="NarrativeCode" (change)="onChange($event.target)">
+                      <option *ngFor="let d of debitnarrativecodeTemplate" [ngValue]="d.DEBIT_NARR">{{d.DEBIT_NARR}}</option>
+                   </select>
+                  </div>
+                </div>  
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitPostingNarrative">Debit Posting Narr.:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="DebitPostingNarrative" placeholder="" formControlName="DebitPostingNarrative"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="MT1031">Create MT103:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <label class="radio-inline">
+                      <input type="radio" name="MT103" value="1" formControlName="MT103"> Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="MT103" value="2" formControlName="MT103"> No
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="MT202">Create MT202:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <label class="radio-inline">
+                      <input type="radio" name="MT202" value="1" formControlName="MT202"> Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="MT202" value="2" formControlName="MT202"> No
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="checkbox col-sm-4 col-lg-4">
+                    <label>
+                      <input type="checkbox" value="" name="EntryComplete" formControlName="EntryComplete">
+                      Entry Complete
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab2cpay">
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditValueDate">Credit Value Date:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="CreditValueDate" placeholder="" formControlName="CreditValueDate">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditAccount">Credit Account:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="CreditAccount" placeholder="" formControlName="CreditAccount">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditCurrency">Credit Currency:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <!--<input class="form-control" name="CreditCurrency" formControlName="CreditCurrency">-->
+                    <select [(ngModel)]="CreditCurrency" class="form-control" name="CreditCurrency" (change)="onChange($event.target)">
+                      <option *ngFor="let cc of creditcurrencyTemplate" [ngValue]="cc.CCY">{{cc.CCY}}</option>
+                   </select> 
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditIntermediaryAgent">Credit Inter. Agent:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="CreditIntermediaryAgent" placeholder="" formControlName="CreditIntermediaryAgent">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="defaultAddress">Default Address:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <!--<input class="form-control" name="DefaultAddress" formControlName="DefaultAddress">-->
+                    <select [(ngModel)]="DefaultAddress" class="form-control" name="DefaultAddress" (change)="onChange($event.target)">
+                      <option *ngFor="let df of defaultaddressTemplate" [ngValue]="df.DEF_ADDR">{{df.DEF_ADDR}}</option>
+                   </select>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditAmount">Credit Amount:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="CreditAmount" placeholder="" formControlName="CreditAmount">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditAgent">Credit Agent:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="CreditAgent" placeholder="" formControlName="CreditAgent">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditNarrativeCode">Credit Narr Code:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <!--<input class="form-control" name="CreditNarrativeCode" formControlName="CreditNarrativeCode">-->
+                    <select [(ngModel)]="CreditNarrativeCode" class="form-control" name="CreditNarrativeCode" (change)="onChange($event.target)">
+                      <option *ngFor="let c of creditnarrativecodeTemplate" [ngValue]="c.CREDIT_NARR">{{c.CREDIT_NARR}}</option>
+                   </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditPostingNarrative">Credit Post Narr:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="CreditPostingNarrative" placeholder="" formControlName="CreditPostingNarrative">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab3cpay">
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="exchangeGroup">Exchange Group:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input class="form-control" name="ExchangeGroup" formControlName="ExchangeGroup">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="exchangeRate">Exchange Rate:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="ExchangeRate" placeholder="" formControlName="ExchangeRate">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="hol Override">Holnameay Overrnamee:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <!--<input class="form-control" name="HolidayOverride" >-->
+                    <select [(ngModel)]="HolidayOverride" class="form-control" name="HolidayOverride" (change)="onChange($event.target)">
+                      <option *ngFor="let h of holidayoverrideTemplate" [ngValue]="h.CNTRY_CHK">
+                        <table>
+                          <td>{{h.CNTRY_CHK}}</td> 
+                          <td></td>
+                        </table>
+                        </option>
+                   </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="widhtOverride">Width Override:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="widthOverride" placeholder="" >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="commissionAmount">Commission Amount:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="CommissionAmount" placeholder="" formControlName="CommissionAmount">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="commissionCurrency">Comm. Currency:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <!--<input class="form-control" name="CommissionCurrency" formControlName="CommissionCurrency">-->
+                    <select [(ngModel)]="CommissionCurrency" class="form-control" name="CommissionCurrency" (change)="onChange($event.target)">
+                      <option *ngFor="let cm of commissioncurrencyTemplate" [ngValue]="cm.COMM_CCY">{{cm.COMM_CCY}}</option>
+                   </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="chargeAmount">Charge Amount:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" name="ChargeAmount" placeholder="" formControlName="ChargeAmount">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="chargeCurrency">Charge Currency:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <!--<input class="form-control" name="ChargeCurrency" formControlName="ChargeCurrency">-->
+                    <select [(ngModel)]="ChargeCurrency" class="form-control" name="ChargeCurrency" (change)="onChange($event.target)">
+                      <option *ngFor="let ch of chargecurrecnyTemplate" [ngValue]="ch.CHARGE_CCY">{{ch.CHARGE_CCY}}</option>
+                   </select>  
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="ChargeMethod">Charge Method:</label>
+                  <div class="col-sm-3 col-lg-3">
+                    <label class="radio-inline">
+                      <input type="radio" name="ChargeMethod" value="1" formControlName="ChargeMethod"> OUR
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="ChargeMethod" value="2" formControlName="ChargeMethod"> BEN
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="ChargeMethod" value="option2" formControlName="ChargeMethod"> SHA
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="checkbox col-sm-4 col-lg-4">
+                    <label>
+                      <input type="checkbox" value="" name="OrderingPartyIsABank" formControlName="OrderingPartyIsABank">
+                      Ordering Party is a Bank
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-12 col-lg-12" for="OrderingPartyDetails">Ordering Party Details:</label>
+                  <div class="col-sm-6 col-lg-6">
+                    <input type="text" class="form-control" name="OrderingPartyDerailsForMT210_1" placeholder="" formControlName="OrderingPartyDerailsForMT210_1">
+                  </div>
+                  <div class="col-sm-6 col-lg-6">
+                    <input type="text" class="form-control" name="OrderingPartyDerailsForMT210_2" placeholder="" formControlName="OrderingPartyDerailsForMT210_2">
+                  </div>
+                  <div class="col-sm-6 col-lg-6">
+                    <input type="text" class="form-control" name="OrderingPartyDerailsForMT210_3" placeholder="" formControlName="OrderingPartyDerailsForMT210_3">
+                  </div>
+                  <div class="col-sm-6 col-lg-6">
+                    <input type="text" class="form-control" name="OrderingPartyDerailsForMT210_4" placeholder="" formControlName="OrderingPartyDerailsForMT210_4">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="submit" class="btn btn-default" value="OK"/>
+        <button type="button" class="btn btn-default" >Edit one</button>
+    </div>
+  </div>
+
+</form>
