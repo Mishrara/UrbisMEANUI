@@ -24,6 +24,7 @@ to push my changed to my branch
  -> git checkout master //switch to master branch
  -> git fetch  // to get the changes to your local repository
  -> git checkout yourbranch name // switch to your branch
+ -> git pull
  -> git merge master // to get the changes in your branch ready for commit
  -> git push origin yourbranch name // pulled changes will get reflected in your branch
 
