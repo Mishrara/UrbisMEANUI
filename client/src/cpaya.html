@@ -1,0 +1,314 @@
+<div class="container-fluid">
+<div class="row">
+    <div class="col-sm-2 col-lg-2">
+    </div>
+    <div class="col-sm-9 col-lg-9">
+      <div class="page-header">
+        <h1>Clean Payments <small>Add</small></h1>
+      </div>
+      <div class="alert alert-danger" role="alert" id="messages">
+      </div>
+      <form>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="contractNumber">Contract Number:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" id="contractNumber" placeholder="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="productType">Product Type:</label>
+          <div class="col-sm-2 col-lg-2">
+            <select class="form-control" id="productType">
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="glMaster">GL Master:</label>
+          <div class="col-sm-2 col-lg-2">
+            <select class="form-control" id="glMaster">
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="incomingReference">IncomingReference:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" id="incomingReference" placeholder="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="accountingCentre">Accounting Centre:</label>
+          <div class="col-sm-2 col-lg-2">
+            <select class="form-control" id="accountingCentre">
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="messagePriority">Message Priority:</label>
+          <div class="col-sm-2 col-lg-2">
+            <select class="form-control" id="messagePriority">
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="status">Status:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" id="status" placeholder="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="replacesContract">Replaces Contract:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" id="replacesContract" placeholder="">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 col-lg-2" for="linkedContract">Linked Contract:</label>
+          <div class="col-sm-2 col-lg-2">
+            <input type="text" class="form-control" id="linkedContract" placeholder="">
+          </div>
+        </div>
+        <div class="panel with-nav-tabs panel-default">
+          <div class="panel-heading">
+            <ul class="nav nav-tabs nav-justified">
+              <li class="active"><a href="#tab1cpay" data-toggle="tab">Debit Details</a></li>
+              <li><a href="#tab2cpay" data-toggle="tab">Credit Details</a></li>
+              <li><a href="#tab3cpay" data-toggle="tab">Other Details</a></li>
+            </ul>
+          </div>
+          <div class="panel-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1cpay">
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitValueDate">Debit Value Date:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="debitValueDate" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitAccount">Debit Account:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="debitAccount" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitAgent">Debit Agent:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="debitAgent" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitAmount">Debit Amount:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="debitAmount" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitCurrency">Debit Currency:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <select class="form-control" id="debitCurrency">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitNarrativeCode">Narrative Code:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <select class="form-control" id="debitNarrativeCode">
+                    </select>
+                  </div>
+                </div>  
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="debitPostingNarrative">Debit Posting Narr.:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="debitPostingNarrative" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="createMT103option1">Create MT103:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <label class="radio-inline">
+                      <input type="radio" name="createMT103options" id="createMT103option1" value="option1"> Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="createMT103options" id="createMT103option2" value="option2"> No
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="createMT202option1">Create MT202:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <label class="radio-inline">
+                      <input type="radio" name="createMT202options" id="createMT202option1" value="option1"> Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="createMT202options" id="createMT202option2" value="option2"> No
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="checkbox col-sm-4 col-lg-4">
+                    <label>
+                      <input type="checkbox" value="">
+                      Entry Complete
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab2cpay">
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditValueDate">Credit Value Date:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="creditValueDate" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditAccount">Credit Account:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="creditAccount" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditCurrency">Credit Currency:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <select class="form-control" id="creditCurrency">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditIntermediaryAgent">Credit Inter. Agent:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="creditIntermediaryAgent" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="defaultAddress">Default Address:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <select class="form-control" id="defaultAddress">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditAmount">Credit Amount:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="creditAmount" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditAgent">Credit Agent:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="creditAgent" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditNarrativeCode">Credit Narr Code:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <select class="form-control" id="creditNarrativeCode">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="creditPostingNarrative">Credit Post Narr:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="creditPostingNarrative" placeholder="">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab3cpay">
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="exchangeGroup">Exchange Group:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <select class="form-control" id="exchangeGroup">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="exchangeRate">Exchange Rate:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="exchangeRate" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="holidayOverride">Holiday Override:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <select class="form-control" id="holidayOverride">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="widthOverride">Width Override:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="widthOverride" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="commissionAmount">Commission Amount:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="commissionAmount" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="commissionCurrency">Comm. Currency:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <select class="form-control" id="commissionCurrency">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="chargeAmount">Charge Amount:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <input type="text" class="form-control" id="chargeAmount" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="chargeCurrency">Charge Currency:</label>
+                  <div class="col-sm-2 col-lg-2">
+                    <select class="form-control" id="chargeCurrency">
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-lg-2" for="chargeMethodOption1">Charge Method:</label>
+                  <div class="col-sm-3 col-lg-3">
+                    <label class="radio-inline">
+                      <input type="radio" name="chargeMethod" id="chargeMethodOption1" value="option1"> OUR
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="chargeMethod" id="chargeMethodOption2" value="option2"> BEN
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="chargeMethod" id="chargeMethodOption3" value="option2"> SHA
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="checkbox col-sm-4 col-lg-4">
+                    <label>
+                      <input type="checkbox" value="">
+                      Ordering Party is a Bank
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-12 col-lg-12" for="orderingPartyDetails1">Ordering Party Details:</label>
+                  <div class="col-sm-6 col-lg-6">
+                    <input type="text" class="form-control" id="orderingPartyDetails1" placeholder="">
+                  </div>
+                  <div class="col-sm-6 col-lg-6">
+                    <input type="text" class="form-control" id="orderingPartyDetails2" placeholder="">
+                  </div>
+                  <div class="col-sm-6 col-lg-6">
+                    <input type="text" class="form-control" id="orderingPartyDetails3" placeholder="">
+                  </div>
+                  <div class="col-sm-6 col-lg-6">
+                    <input type="text" class="form-control" id="orderingPartyDetails4" placeholder="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-default" onclick="disableInputs()">OK</button>
+        <button type="button" class="btn btn-default" onclick="enableInputs()">Edit</button>
+      </form>
+    </div>
+  </div>
+</div>
