@@ -1,7 +1,56 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-navbar></app-navbar>
 
 <div class="container-fluid">
-<router-outlet></router-outlet>
+    <app-navbar></app-navbar>
+    <div class="row">
+        <section id="sideNav">
+            <div class="panel-group col-sm-2" style="padding-right:20px; border-right: 1px solid #ccc;" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" data-target="#sidePannel">Clean Payments</div>
+                        </h4>
+                    </div>
+                    <div id="sidePannel" class="panel-collapse collapse">
+                        <div class="panel-body" routerLink="/cpaya">Create</div>
+                        <div class="panel-body" routerLink="/cpayi">Inquiry</div>
+                        <div class="panel-body" routerLink="/cpayd">Delete</div>
+                        <div class="panel-body" routerLink="/cpayc">Change</div>
+                        <div class="panel-body" routerLink="/cpayat">Authorise</div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" data-target="#sidePanne2">Standing Orders</div>
+                        </h4>
+                    </div>
+                    <div id="sidePanne2" class="panel-collapse collapse">
+                        <div class="panel-body">Create</div>
+                        <div class="panel-body">Inquiry</div>
+                        <div class="panel-body">Delete</div>
+                        <div class="panel-body">Change</div>
+                        <div class="panel-body">Authorise</div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <div data-toggle="collapse" data-parent="#accordion" data-target="#sidePanne3">General</div>
+                        </h4>
+                    </div>
+                    <div id="sidePanne3" class="panel-collapse collapse">
+                        <div class="panel-body">Contract Inquiry</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="mainPage">
+            <div class="col-sm-10">
+                <router-outlet></router-outlet>
+            </div>
+        </section>
+    </div>
 </div>
+
   
