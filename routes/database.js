@@ -14,12 +14,11 @@ var config = {
 // connect to your database
 var connection = sql.connect(config, function (err) {
     if (err){
-            console.log("SQL Connection Error: " + err);
-            throw err; 
-        }
+        throw err; 
+    }
     else
         {
-            console.log("connection successfull with SQL DB");
+            console.log("connection successfull with DB");
         }
         
 });

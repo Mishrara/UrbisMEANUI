@@ -6,16 +6,37 @@
 
 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 <ul class="nav navbar-nav navbar-left mr-auto">
-  <li class="nav-item active">
+  <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
     <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+  </li>
+  <li *ngIf="authService.loggedIn()" class="nav-item dropdown" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+          <li>
+            <a class="nav-link" routerLink="/cpaya">CPAY Add</a>
+          </li>
+          <li>    
+            <a class="nav-link" routerLink="/cpayi">CPAY Inq</a>
+          </li>
+          <li>    
+            <a class="nav-link" routerLink="/cpayc">CPAY Chg</a>
+          </li>
+          <li>    
+            <a class="nav-link" routerLink="/cpayd">CPAY Del</a>
+          </li>
+      </ul>
   </li>
 </ul>
 <ul class="nav navbar-nav navbar-right mr-auto">
-  <li class="nav-item active">
-    <a class="nav-link" href="#">help <span class="sr-only"></span></a>
+  <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+    <a class="nav-link" href="#">help </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">About</a>
+  <li *ngIf="!authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+    <a class="nav-link" routerLink="/login">Login</a>
+  </li>
+  <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+    <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
   </li>
 </ul></div>
 </nav>
