@@ -27,4 +27,6 @@ to push my changed to my branch
  -> git pull
  -> git merge master // to get the changes in your branch ready for commit
  -> git push origin yourbranch name // pulled changes will get reflected in your branch
+ 
+ ///learning 
 
