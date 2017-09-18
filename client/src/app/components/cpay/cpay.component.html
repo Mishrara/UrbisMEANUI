@@ -11,7 +11,7 @@
       <div class="form-group">
           <label class="col-sm-2 col-lg-2" for="contractNumber">Contract Number:</label>
           <div class="col-sm-2 col-lg-2">
-            <input type="text" class="form-control" name="ContractNumber" placeholder="" formControlName="ContractNumber">
+            <input type="text" class="form-control" name="ContractNumber" placeholder="" formControlName="ContractNumber" ng-maxlength="=12">
           </div>
         </div>
         <div class="form-group">
@@ -25,8 +25,9 @@
         <div class="form-group">
           <label class="col-sm-2 col-lg-2" for="glMaster">GL Master:</label>
           <div class="col-sm-2 col-lg-2">
-            <input class="form-control" name="GLMaster" formControlName="GLMaster"/>
-           
+            <select [(ngModel)]="GLMaster" class="form-control" name="GLMaster" (change)="onChange($event.target)" required>
+              <option *ngFor="let g of glmasterTemplate" [ngValue]="g.MASTER_NO">{{g.MASTER_NO}}</option>
+           </select>
           </div>
         </div>
         <div class="form-group">
@@ -38,15 +39,20 @@
         <div class="form-group">
           <label class="col-sm-2 col-lg-2" for="accountingCentre">Accounting Centre:</label>
           <div class="col-sm-2 col-lg-2">
-            <input class="form-control" name="AccountingCentre" formControlName="AccountingCentre"/>
-           
+           <select [(ngModel)]="AccountingCentre" class="form-control" name="AccountingCentre" (change)="onChange($event.target)" required>
+              <option *ngFor="let a of accountingcentreTemplate" [ngValue]="a.BRANCH">{{a.BRANCH}}</option>
+           </select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 col-lg-2" for="messagePriority">Message Priority:</label>
           <div class="col-sm-2 col-lg-2">
-            <input class="form-control" name="MessagePriority" formControlName="MessagePriority"/>
-           
+            <select [(ngModel)]="MessagePriority" class="form-control" name="MessagePriority" (change)="onChange($event.target)">
+              <option value="02">NORMAL N2020 </option>
+              <option value="01">URGENT U1003</option>
+              <option value="11">URGENT U3003 </option>
+              <option value="99"> NONE </option>
+           </select>
           </div>
         </div>
         <div class="form-group">
@@ -105,15 +111,18 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-lg-2" for="debitCurrency">Debit Currency:</label>
                   <div class="col-sm-2 col-lg-2">
-                    <input class="form-control" name="DebitCurrency" formControlName="DebitCurrency"/>
-                   
+                    <select [(ngModel)]="DebitCurrency" class="form-control" name="DebitCurrency" (change)="onChange($event.target)">
+                      <option *ngFor="let dc of debitcurrencyTemplate" [ngValue]="dc.DEBIT_CCY">{{dc.CCY}} | {{dc.NAME}}</option>
+                   </select>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-lg-2" for="debitNarrativeCode">Narrative Code:</label>
                   <div class="col-sm-2 col-lg-2">
-                    <input class="form-control" name="DebitNarrativeCode" formControlName="DebitNarrativeCode"/> 
-                   
+                    <select [(ngModel)]="NarrativeCode" class="form-control" name="NarrativeCode" (change)="onChange($event.target)">
+                      <option *ngFor="let d of debitnarrativecodeTemplate" [ngValue]="d.DEBIT_NARR">{{d.I_D}} | {{d.TEXT}}</option>
+                   </select>
+
                   </div>
                 </div>  
                 <div class="form-group">
@@ -169,8 +178,9 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-lg-2" for="creditCurrency">Credit Currency:</label>
                   <div class="col-sm-2 col-lg-2">
-                    <input class="form-control" name="CreditCurrency" formControlName="CreditCurrency">
-                   
+                    <select [(ngModel)]="CreditCurrency" class="form-control" name="CreditCurrency" (change)="onChange($event.target)">
+                      <option *ngFor="let cc of creditcurrencyTemplate" [ngValue]="cc.CCY">{{cc.CCY}} | {{cc.NAME}}</option>
+                   </select> 
                   </div>
                 </div>
                 <div class="form-group">
@@ -182,8 +192,9 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-lg-2" for="defaultAddress">Default Address:</label>
                   <div class="col-sm-2 col-lg-2">
-                    <input class="form-control" name="DefaultAddress" formControlName="DefaultAddress">
-                   
+                    <select [(ngModel)]="DefaultAddress" class="form-control" name="DefaultAddress" (change)="onChange($event.target)">
+                      <option *ngFor="let df of defaultaddressTemplate" [ngValue]="df.TEXT">{{df.TEXT}}</option>
+                   </select>  
                   </div>
                 </div>
                 <div class="form-group">
@@ -201,8 +212,10 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-lg-2" for="creditNarrativeCode">Credit Narr Code:</label>
                   <div class="col-sm-2 col-lg-2">
-                    <input class="form-control" name="CreditNarrativeCode" formControlName="CreditNarrativeCode">
-                   
+                    <select [(ngModel)]="CreditNarrativeCode" class="form-control" name="CreditNarrativeCode" (change)="onChange($event.target)">
+                      <option *ngFor="let c of creditnarrativecodeTemplate" [ngValue]="c.CREDIT_NARR">{{c.I_D}} | {{C.TEXT}}</option>
+                   </select>
+
                   </div>
                 </div>
                 <div class="form-group">
@@ -228,8 +241,16 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-lg-2" for="hol Override">Holnameay Overrnamee:</label>
                   <div class="col-sm-2 col-lg-2">
-                    <input class="form-control" name="HolidayOverride" >
-                   
+
+                    <select [(ngModel)]="HolidayOverride" class="form-control" name="HolidayOverride" (change)="onChange($event.target)">
+                      <option *ngFor="let h of holidayoverrideTemplate" [ngValue]="h.CNTRY_CHK">
+                        <table>
+                          <td>{{h.CNTRY_CHK}}</td> 
+                          <td></td>
+                        </table>
+                        </option>
+                   </select>
+
                   </div>
                 </div>
                 <div class="form-group">
@@ -247,8 +268,10 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-lg-2" for="commissionCurrency">Comm. Currency:</label>
                   <div class="col-sm-2 col-lg-2">
-                    <input class="form-control" name="CommissionCurrency" formControlName="CommissionCurrency">
-                   
+                    <select [(ngModel)]="CommissionCurrency" class="form-control" name="CommissionCurrency" (change)="onChange($event.target)">
+                      <option *ngFor="let cm of commissioncurrencyTemplate" [ngValue]="cm.COMM_CCY">{{cm.CCY}} | {{cm.NAME}}</option>
+                   </select>
+
                   </div>
                 </div>
                 <div class="form-group">
@@ -260,8 +283,11 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-lg-2" for="chargeCurrency">Charge Currency:</label>
                   <div class="col-sm-2 col-lg-2">
-                    <input class="form-control" name="ChargeCurrency" formControlName="ChargeCurrency">
-                   
+
+                    <select [(ngModel)]="ChargeCurrency" class="form-control" name="ChargeCurrency" (change)="onChange($event.target)">
+                      <option *ngFor="let ch of chargecurrecnyTemplate" [ngValue]="ch.CHARGE_CCY">{{ch.CCY}} | {{ch.NAME}}</option>
+                   </select>  
+
                   </div>
                 </div>
                 <div class="form-group">
