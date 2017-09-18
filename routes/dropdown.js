@@ -4,7 +4,7 @@ var router = express.Router();
 var db = require('./database');
 
 router.get('/dropdown/STNS', function (req, res) {
-    // create request object
+    // create Request object
     var request = new db.request();
     // query to the database and get the records
     request.query('select * from URBIS.STNS', function (err, recordset) {
@@ -18,7 +18,7 @@ router.get('/dropdown/STNS', function (req, res) {
 });
 
 router.get('/dropdown/PRODTYPE', function (req, res) {
-    // create request object
+    // create Request object
     var request = new db.request();
     // query to the database and get the records
     request.query("select PROD_NAME,PROD_TYPE from URBIS.PRTPO WHERE PROD_GROUP LIKE '%CP%'", function (err, recordset) {
@@ -30,6 +30,7 @@ router.get('/dropdown/PRODTYPE', function (req, res) {
         
     });
 });
+
 
 router.get('/dropdown/GLMaster', function (req, res) {
     // create request object

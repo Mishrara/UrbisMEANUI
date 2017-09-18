@@ -12,17 +12,6 @@ import {DropdownService} from '../../services/dropdown.service';
 export class CpayComponent implements OnInit {
   cpayForm: FormGroup;
   productTemplate
-  glmasterTemplate
-  accountingcentreTemplate
-  messagepriorityTemplate
-  debitnarrativecodeTemplate
-  debitcurrencyTemplate
-  creditnarrativecodeTemplate
-  creditcurrencyTemplate
-  defaultaddressTemplate
-  chargecurrecnyTemplate
-  commissioncurrencyTemplate
-  holidayoverrideTemplate
   ScreeenCaption: string;
   createForm(){
     console.log(this.ScreeenCaption);
@@ -30,7 +19,7 @@ export class CpayComponent implements OnInit {
       screenCaption: this.ScreeenCaption,
       AccountingCentre: '',
       ChargeAmount: '',
-      ChargeCurrency: '',
+      ChargeCurrency:'',
       ChargeMethod: '',
       ChargePercentage: '',
       CommissionAmount: '',
@@ -96,44 +85,9 @@ export class CpayComponent implements OnInit {
   }
   loadDropDowns()
   {
-    this.dropDown.getDropDown("PRODTYPE").subscribe(data => {
+     this.dropDown.getDropDown("PRODTYPE").subscribe(data => {
        this.productTemplate= data});
-
-    this.dropDown.getDropDown("GLMaster").subscribe(data => {
-       this.glmasterTemplate= data});
-
-    this.dropDown.getDropDown("AccountingCentre").subscribe(data => {
-       this.accountingcentreTemplate= data});
-        
-    this.dropDown.getDropDown("MessagePriority").subscribe(data => {
-       this.messagepriorityTemplate= data});
-         
-    this.dropDown.getDropDown("DebitNarrativeCode").subscribe(data => {
-       this.debitnarrativecodeTemplate= data});
-            
-    this.dropDown.getDropDown("DebitCurrency").subscribe(data => {
-       this.debitcurrencyTemplate= data});
-              
-    this.dropDown.getDropDown("CreditNarrativeCode").subscribe(data => {
-       this.creditnarrativecodeTemplate= data});
-
-    this.dropDown.getDropDown("CreditCurrency").subscribe(data => {
-       this.creditcurrencyTemplate= data});
-
-    this.dropDown.getDropDown("DefaultAddress").subscribe(data => {
-       this.defaultaddressTemplate= data});
- 
-    this.dropDown.getDropDown("ChargeCurrency").subscribe(data => {
-       this.chargecurrecnyTemplate= data});
- 
-    this.dropDown.getDropDown("CommissionCurrency").subscribe(data => {
-       this.commissioncurrencyTemplate= data});
-
-    this.dropDown.getDropDown("HolidayOverride").subscribe(data => {
-       this.holidayoverrideTemplate= data});
-       
   }
-
   constructor(private formBuilder:FormBuilder,
     private transectService: TransectService,
     private dropDown:DropdownService,
