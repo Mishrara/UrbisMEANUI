@@ -75,13 +75,9 @@ router.post('/cpay', function(req,res,next){
 	});
 	
 	cpay.save((err)=>{
-		if(err){
-			console.log(err);
-			return err;
-		}
-		console.log("successful save to db");
+		console.log("save sucess to db");
+		console.log(err);
 		res.json({message : err});
 	});
-	//console.log("save success");
 });
 module.exports = router

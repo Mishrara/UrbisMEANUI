@@ -1,0 +1,50 @@
+<form [formGroup]="loginForm" (submit)="onLoginSubmit()" >
+
+  <div class="col-sm-9 col-lg-9">
+    <div class="page-header">
+      <h1>Login <small>{{this.loginForm.controls.screenCaption.value}}</small></h1>
+    </div>
+  
+  <div class="form-group">
+    <label class="col-sm-6 col-lg-6" for="domain">Domain:</label>
+    <div class="col-sm-6 col-lg-6" [ngClass]="{'has-error':(loginForm.controls.domain.errors && loginForm.controls.domain.dirty) ,
+    'has-success':!loginForm.controls.domain.errors}">
+      <input type="text" class="form-control" name="domain" placeholder="" formControlName="domain" />
+      <ul class="help-block">
+         <li *ngIf="loginForm.controls.domain.errors?.required && (loginForm.controls.domain.dirty || loginForm.controls.domain.touched)" [ngStyle]="{'color': 'red'}">Domain is required</li> 
+      </ul>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label class="col-sm-6 col-lg-6" for="userId">User Id:</label>
+    <div class="col-sm-6 col-lg-6" [ngClass]="{'has-error':(loginForm.controls.userId.errors && loginForm.controls.userId.dirty) ,
+    'has-success':!loginForm.controls.userId.errors}">
+      <input type="text" class="form-control" name="userId" placeholder="" formControlName="userId" />
+      <ul class="alert-error">
+        <li *ngIf="loginForm.controls.userId.errors?.required && (loginForm.controls.userId.dirty || loginForm.controls.userId.touched)" [ngStyle]="{'color': 'red'}">User Name is required</li> 
+     </ul>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-6 col-lg-6" for="password">Password:</label>
+    <div class="col-sm-6 col-lg-6" [ngClass]="{'has-error':(loginForm.controls.password.errors && loginForm.controls.password.dirty ),
+    'has-success':!loginForm.controls.password.errors}">
+      <input type="password" class="form-control" name="password" placeholder="" formControlName="password" />
+      <ul class="help-block">
+        <li *ngIf="loginForm.controls.password.errors?.required && (loginForm.controls.password.dirty || loginForm.controls.password.touched)" [ngStyle]="{'color': 'red'}">Password is required</li> 
+     </ul>
+      
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-6 col-lg-6" for="otp">Enter OTP:</label>
+    <div class="col-sm-6 col-lg-6">
+      <input type="password" class="form-control" name="otp" placeholder="" formControlName="otp">
+    </div>
+  </div>
+  <button  type="submit" class="btn btn-default" [disabled]="!loginForm.valid">Login</button>
+  <button type="button" class="btn" onclick="disableInputs()">Cancel</button>
+  </div>
+</form>
