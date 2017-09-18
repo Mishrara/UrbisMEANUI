@@ -63,7 +63,7 @@ router.get('/dropdown/DebitNarrativeCode', function (req, res) {
     // create request object
     var request = new db.request();
     // query to the database and get the records
-    request.query("select DBTNARCDE from URBIS.GNARO WHERE TABLETYPE='ST'", function (err, recordset) {
+    request.query("select I_D, TEXT from URBIS.GNARO WHERE TABLETYPE='ST'", function (err, recordset) {
         
         if (err) console.log(err);
 
@@ -77,7 +77,7 @@ router.get('/dropdown/DebitCurrency', function (req, res) {
     // create request object
     var request = new db.request();
     // query to the database and get the records
-    request.query("select CCY from URBIS.CCYS", function (err, recordset) {
+    request.query("select CCY,NAME from URBIS.CCYS", function (err, recordset) {
         
         if (err) console.log(err);
 
@@ -91,7 +91,7 @@ router.get('/dropdown/CreditNarrativeCode', function (req, res) {
     // create request object
     var request = new db.request();
     // query to the database and get the records
-    request.query("select DBTNARCDE from URBIS.GNARO WHERE TABLETYPE='ST'", function (err, recordset) {
+    request.query("select I_D, TEXT from URBIS.GNARO WHERE TABLETYPE='ST'", function (err, recordset) {
         
         if (err) console.log(err);
 
@@ -105,7 +105,7 @@ router.get('/dropdown/CreditCurrency', function (req, res) {
     // create request object
     var request = new db.request();
     // query to the database and get the records
-    request.query("select CCY from URBIS.CCYS", function (err, recordset) {
+    request.query("select CCY,NAME from URBIS.CCYS", function (err, recordset) {
         
         if (err) console.log(err);
 
@@ -119,7 +119,7 @@ router.get('/dropdown/DefaultAddress', function (req, res) {
     // create request object
     var request = new db.request();
     // query to the database and get the records
-    request.query("select DBTNARCDE from URBIS.GNARO WHERE TABLETYPE='AT'", function (err, recordset) {
+    request.query("select TEXT from URBIS.GNARO WHERE TABLETYPE='AT'", function (err, recordset) {
         
         if (err) console.log(err);
 
@@ -133,7 +133,7 @@ router.get('/dropdown/ChargeCurrency', function (req, res) {
     // create request object
     var request = new db.request();
     // query to the database and get the records
-    request.query("select CCY from URBIS.CCYS", function (err, recordset) {
+    request.query("select CCY,NAME from URBIS.CCYS", function (err, recordset) {
         
         if (err) console.log(err);
 
@@ -147,7 +147,7 @@ router.get('/dropdown/CommissionCurrency', function (req, res) {
     // create request object
     var request = new db.request();
     // query to the database and get the records
-    request.query("select CCY from URBIS.CCYS", function (err, recordset) {
+    request.query("select CCY,NAME from URBIS.CCYS", function (err, recordset) {
         
         if (err) console.log(err);
 
